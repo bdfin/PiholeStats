@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Json.Serialization;
 
-namespace PiholeStats.App.Models
+namespace PiholeStats.App.Data.Models
 {
     public class PiholeInfo
     {

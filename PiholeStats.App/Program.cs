@@ -1,4 +1,4 @@
-﻿using PiholeStats.App.Models;
+﻿using PiholeStats.App.Data.Models;
 using PiholeStats.App.Services;
 using System;
 using System.Threading;
