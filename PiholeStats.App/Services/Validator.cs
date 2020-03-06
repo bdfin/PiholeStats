@@ -9,7 +9,7 @@ namespace PiholeStats.App.Services
     {
         public static bool IpAddressIsValid(string ipString)
         {
-            if (String.IsNullOrWhiteSpace(ipString))
+            if (string.IsNullOrWhiteSpace(ipString))
             {
                 return false;
             }

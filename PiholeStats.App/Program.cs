@@ -1,7 +1,6 @@
 ﻿using PiholeStats.App.Models;
 using PiholeStats.App.Services;
 using System;
-using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,7 +15,7 @@ namespace PiholeStats.App
             bool repeat;
             do
             {
-                repeat = false;
+                repeat = true;
 
                 Console.WriteLine("Enter the PiHole IPv4 address (e.g. 192.168.1.1):");
 
@@ -30,10 +29,10 @@ namespace PiholeStats.App
                 else
                 {
                     Console.WriteLine("That's not a valid IPv4 address..");
+                    Console.WriteLine();
                 }
 
-            } while (repeat == false);
-
+            } while (repeat == true);
 
             Console.WriteLine();
             Console.WriteLine($"Contacting pihole at: { piholeIp }...");
@@ -42,15 +41,9 @@ namespace PiholeStats.App
 
             Console.WriteLine();
 
-            var piholeStats = await PiholeService.GetStatsAsync(piholeIp);
+            PiholeInfo piholeStats = await PiholeService.GetStatsAsync(piholeIp);
 
-            foreach (PropertyInfo prop in typeof(PiholeStatsModel).GetProperties())
-            {
-                string output = $"{ prop.Name }: { prop.GetValue(piholeStats, null) }";
-                Thread.Sleep(150);
-                Console.WriteLine(output);
-            }
-
+            PiholeService.PrintStats(piholeStats);
         }
     }
 }

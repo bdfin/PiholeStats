@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace PiholeStats.App.Models
 {
-    public class PiholeStatsModel
+    public class PiholeInfo
     {
         [JsonPropertyName("status")]
         public string Status { get; set; }
