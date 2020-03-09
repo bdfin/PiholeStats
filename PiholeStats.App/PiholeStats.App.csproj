@@ -6,7 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.2" />
+    <Compile Remove="Data\20200306173744_Initial.cs" />
+    <Compile Remove="Data\20200306173744_Initial.Designer.cs" />
   </ItemGroup>
 
 </Project>

@@ -1,4 +1,5 @@
-﻿using PiholeStats.App.Data.Models;
+﻿using PiholeStats.App.Data;
+using PiholeStats.App.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -14,12 +15,15 @@ namespace PiholeStats.App.Services
     {
         public static void PrintStats(PiholeInfo piholeStats)
         {
-            foreach (PropertyInfo prop in typeof(PiholeInfo).GetProperties())
-            {
-                string output = $"{ prop.Name }: { prop.GetValue(piholeStats, null) }";
-                Thread.Sleep(150);
-                Console.WriteLine(output);
-            }
+            string output = $"Pihole Stats (Today): \n \n";
+            output += $"Status: { piholeStats.Status } \n";
+            output += $"DNS Queries: { piholeStats.DnsQueriesToday } \n";
+            output += $"Ads Blocked: { piholeStats.AdsBlockedToday} \n";
+            output += $"% Blocked: { Math.Round(piholeStats.PercentBlockedToday, 2) } \n";
+            output += $"Queries Forwarded: { piholeStats.QueriesForwarded } \n";
+            output += $"Queries Cached: { piholeStats.QueriesCached } \n";
+
+            Console.WriteLine(output);
         }
 
         public static async Task<PiholeInfo> GetStatsAsync(string piholeIpAddress)
